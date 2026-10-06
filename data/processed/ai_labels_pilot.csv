@@ -1,0 +1,21 @@
+report_number,primary_fm,secondary_fm,phase,severity,contributor,retained_fragment,confidence,supporting_quote,note
+3006260740-2024-03572,FM01,FM04,P3,S1,UNK,N,medium,KINK AT 6CM THAT STOPPED FUNCTION. NOTICED THAT THE LINE HAD SPLIT,"Split is in the external part of the catheter shaft, not the hub. Rule needed: external shaft = FM01."
+3006260740-2023-04421,FM01,none,P3,S1,UNK,N,low,A SMALL AMOUNT OF WATER LEAKED FROM THE INSERTION SITE,"Leak at insertion site suggests a shaft breach under the skin, but no breach was seen."
+3006260740-2024-08023,FM02,none,P1,S1,DEV,N,medium,RECEIVED WITH NO CUFF ATTACHED TO THE CATHETER,Missing component out of the box. No category fits well: consider 'assembly / component missing'.
+3006260740-2022-06022,FM02,none,P2,S2,DEV,N,medium,DISCONNECTED 1 CM FROM THE CONNECTION PORT OF THE EXTENSION TUBE,Lot history: six similar complaints from the same lot.
+16701528,FM02,FM05,P2,S1,DEV,N,high,THE RUBBER STOPPER AT THE END OF THE PICC WHICH HOLDS THE GUIDE WIRE DISLODGED,"Nurse sprayed with blood: harm to the user, which the severity scale (patient only) does not capture."
+9680794-2025-00810,FM05,none,P2,S4,DEV,Y,high,PEEL-APART SHEATH SPLIT AND TORE LEAVING SOME OF THE SHEATH INSIDE THE PATIENTS' VESSEL,Surgical cutdown to remove fragment.
+3006260740-2023-01307,FM02,none,P2,S1,DEV,N,high,SOME LEAKING IS OCCURRING THROUGH SEPTUM,Manufacturer confirmed a manufacturing cause. Same part as reports 16701528 and 3006260740-2023-01282.
+3006260740-2024-05784,FM01,none,P3,S1,UNK,N,high,THE MIDPOINT OF THE CATHETER ALLEGEDLY HAD A TEAR,
+3006260740-2023-01148,FM01,FM03,P3,S2,DEV,N,high,THERE IS A HOLE IN THE CATHETER RIGHT ABOVE THE WINGS,Air drawn into line: potential air embolism hazard. Hole confirmed by manufacturer.
+3006260740-2025-04505,FM01,none,P2,S1,DEV,N,medium,THE CATHETER OUTER LINE WAS PEELED APART,Separation at a joint in the catheter body; could be argued as FM02.
+3006260740-2024-00012,FM01,none,P5,S1,UNK,N,high,I CAN CONFIRM THIS WAS A PARTIAL FRACTURE OF THE CATHETER,"Severity unknown; S1 by rule, low confidence on severity."
+3006260740-2022-05999,FM02,none,P3,S1,UNK,N,high,THE EXTENSION TUBE RUPTURED UPON FLUSHING THE DEVICE USING 10ML SYRINGE,"10 mL syringe is standard practice, so not coded as use error."
+3006260740-2023-01282,FM02,none,P2,S1,DEV,N,high,"THE RUBBER PIECE THAT HOLDS THE TECHNOLOGY WIRE, HOLE IS TOO BIG","Multiple events at one site, exact number unknown. Same part as 16701528 and 2023-01307."
+MW5164407,FM06,none,P3,S3,UNK,N,medium,HER HICKMAN LINE FELL OUT,Hospital admission for replacement. Reported via a drug manufacturer's patient programme.
+3006260740-2024-08110,FM01,none,P3,S2,UNK,N,low,LEAKAGE WAS NOTED AROUND THE SITE,"Leak at site, line removed; breach not confirmed."
+3006260740-2023-01203,FM05,none,P2,S1,UNK,N,high,THE SHEATH STARTED TO BUCKLE AS IT WAS ENTERING THE PATIENT'S SKIN,
+3006260740-2024-00043,FM01,none,P5,S2,UNK,N,high,BOTH PUNCTURES OF THE VENOUS CATHETER ... AND COMPLETE RUPTURE OF THE PICC,One of five reports for the same complaint (five devices).
+3006260740-2023-01296,FM01,none,P3,S1,UNK,N,high,THE CATHETER WAS ALLEGEDLY FRACTURED,
+3006260740-2025-07503,FM01,FM11,P3,S3,UNK,N,high,INTERNAL FRACTURE OBSERVED ... CAUSED EXTRAVASATION IN PATIENT,Extravasation of epirubicin (a vesicant chemotherapy drug).
+3006260740-2024-08129,FM01,FM04,P3,S2,USE,N,medium,A HOLE 5 CM FROM THE 0 MARK ... FOLDED IN THE SAME PLACE AS THE HOLE,Nurse flushed an occluded line with a 1 mL syringe; small syringes create high pressure. Also occlusion (FM03).

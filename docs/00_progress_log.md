@@ -42,3 +42,10 @@ Issues found:
 - Pilot on 20 random reports (excluded from later validation). Results in `data/processed/ai_labels_pilot.csv`.
 - Main finding: 8 of 10 reports with the FDA code "Fluid/Blood Leak" actually describe catheter body breakage.
 - Found 5 rule problems; to be fixed (categories v1.1) before the full run.
+
+**Step 4: AI classification (done)**
+- Categories updated to v1.1 after the pilot (5 rule fixes).
+- FMEA source anonymised; git history rebuilt so earlier versions are not published.
+- 300 reports coded (25 per quarter). 288 unique complaints after removing 3 voided duplicates and grouping repeat reports.
+- Results in `docs/05_ai_classification_results.md`. Main findings: 80% of FDA "leak" reports are catheter body breaks; catheter breaks rose from 28% to 54% of complaints 2023-2025; a septum/stopper leak cluster in 2023 that faded; insertion accessories (14%) are the biggest hazard missing from the reference FMEA.
+- Built `data/step5_manual_coding.xlsx`: 100 reports for blind manual coding (no AI answers).

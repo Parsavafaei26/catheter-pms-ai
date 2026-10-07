@@ -2,7 +2,7 @@
 
 **A validated prototype using FDA MAUDE adverse event reports, 2023-2025**
 
-Parsa Vafaei · October 2026
+Parsa Vafaei, MSc Biomedical Engineering, University of Sheffield · October 2026
 
 ---
 

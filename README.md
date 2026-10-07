@@ -57,4 +57,4 @@ used to calculate event rates. Results must not be used to compare manufacturers
 
 ## Author
 
-Parsa Vafaei, MSc Biomedical Engineering · Regulatory affairs and quality
+Parsa Vafaei, MSc Biomedical Engineering (University of Sheffield) · Regulatory affairs and quality

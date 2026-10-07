@@ -1,43 +1,60 @@
 # AI-assisted post-market surveillance for long-term central venous catheters
 
-A small prototype that reads public FDA MAUDE adverse event reports for long-term
-implanted intravascular catheters (including PICCs), uses a large language model to
-classify each report by failure mode and harm severity, and compares the results with
-an ISO 14971-style FMEA.
+A validated prototype that uses a large language model to classify FDA MAUDE adverse event
+reports by failure mode, severity and phase of use, and feeds the results back into an
+ISO 14971-style FMEA.
 
-The project is **decision support for post-market surveillance (PMS) trend review**.
-It does not decide whether an event is reportable, and every AI output is reviewed by
-a person. See [docs/01_intended_use.md](docs/01_intended_use.md).
+**[Read the full report](REPORT.md)**
 
-## Status
+## Key results
 
-| Step | Description | Status |
+- **80%** of complaints carrying the FDA code "Fluid/Blood Leak" actually describe a
+  **catheter body break** when the narrative is read.
+- Catheter body breaks rose from **28% to 54%** of complaints between 2023 and 2025.
+- A leak and air-entry cluster at the stylet septum appeared in 2023 and faded by 2025.
+- Insertion accessories, air entry, kinking, malposition and harm to users were missing from
+  the reference design FMEA.
+- **Validation against blind expert coding (100 reports):** failure mode 93% agreement
+  (Cohen's kappa 0.90). Severity rose from 61% to 85% agreement after a rule fix and an
+  independent re-run.
+
+![Failure mode trend](figures/fig2_failure_mode_trend.png)
+
+## Intended use
+
+Decision support for PMS trend review. Not for reportability decisions, incidence rates or
+clinical decisions. Severity ratings and serious events are always reviewed by a person.
+See [docs/01_intended_use.md](docs/01_intended_use.md).
+
+## How it works
+
+| Step | What | Where |
 |---|---|---|
-| 1 | Intended use and scope | Draft |
-| 2 | Data extraction from openFDA (MAUDE) | Done: 1,600 reports, balanced sample of 1,200 |
-| 3 | Failure-mode categories and definitions (from FMEA) | Done (v1.0) |
-| 4 | AI classification | Done (300 reports) |
-| 5 | Validation against manual review (n = 100) | Done: 93% agreement on failure mode (kappa 0.90) |
-| 6 | Results and FMEA comparison | Done |
-| 7 | Write-up and limitations | Not started |
+| 1 | Intended use and scope | `docs/01_intended_use.md` |
+| 2 | Extract MAUDE reports (openFDA, product code LJS, 2023-2025) | `scripts/fetch_maude.py`, `docs/03_data_summary.md` |
+| 3 | Failure-mode categories and coding rules, reviewed against an FMEA | `docs/02_failure_mode_categories.md` |
+| 4 | AI classification of 300 reports | `docs/04_classification_method.md`, `docs/05_ai_classification_results.md` |
+| 5 | Blind validation, root-cause fix and independent re-test | `docs/06_validation_results.md` |
+| 6 | Figures and FMEA comparison | `figures/`, `docs/07_fmea_comparison.md` |
+| 7 | Report and reusable Claude skill | `REPORT.md`, `skill/maude-pms-coder/` |
 
-## Repository layout
+## Reproduce
+
+Python 3 with `openpyxl` and `matplotlib`.
 
 ```
-docs/       intended use, category definitions, method, results
-scripts/    data extraction and classification scripts
-data/raw/        openFDA JSON downloads (public domain)
-data/processed/  cleaned CSV files used for analysis
+python3 scripts/fetch_maude.py --from-json data/raw/page*.json   # build the report CSV
+python3 scripts/prepare_batches.py select                          # draw the coding sample
+python3 scripts/compare_validation.py                              # AI vs human agreement
+python3 scripts/make_figures.py                                    # figures
 ```
 
-## Data source
+## Data
 
-U.S. FDA Manufacturer and User Facility Device Experience (MAUDE) database, accessed
-through the openFDA device adverse event API (https://open.fda.gov/apis/device/event/).
-MAUDE data are public. They are subject to under-reporting, duplicate reports and
-missing information, and they cannot be used to calculate event rates because there is
-no data on how many devices are in use.
+U.S. FDA MAUDE via openFDA (public domain). MAUDE is subject to under-reporting, missing
+information and duplicates, contains allegations rather than confirmed causes, and cannot be
+used to calculate event rates. Results must not be used to compare manufacturers.
 
 ## Author
 
-Parsa Vafaei, MSc Biomedical Engineering (University of Sheffield)
+Parsa Vafaei, MSc Biomedical Engineering · Regulatory affairs and quality

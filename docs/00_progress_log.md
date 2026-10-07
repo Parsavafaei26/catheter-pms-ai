@@ -64,3 +64,8 @@ Issues found:
 - Categories v1.2: unplanned line replacement = S3; repair/trim/removal = S2; severity patient-only; full manufacturer narrative given to the model.
 - Independent re-run by a separate Claude instance with only the rules and report text.
 - Severity agreement 61% -> 85% (kappa 0.44 -> 0.78); failure mode 93% -> 92%; all fields identical 43% -> 63%.
+
+**Step 7: Report (draft done)**
+- `REPORT.md`: summary, background, intended use, method, results, validation and re-test, FMEA comparison, limitations, conclusions.
+- `README.md` rewritten as the GitHub front page.
+- `skill/maude-pms-coder/`: the coding method packaged as a reusable Claude skill.

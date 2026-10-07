@@ -98,3 +98,21 @@ ax.set_yticks(range(len(fields)), [x[1] for x in fields]); ax.invert_yaxis(); ax
 style(ax, "AI vs blind human coding, 100 reports", "Exact agreement per field; orange = below 80%")
 fig.tight_layout(); fig.savefig(OUT / "fig5_validation_agreement.png"); plt.close(fig)
 print("done", sorted(p.name for p in OUT.iterdir()))
+
+# 6. Validation before and after the v1.2 fix
+rr = ROOT / "data" / "rerun" / "validation_comparison_v1_2.csv"
+if rr.exists():
+    comp2 = list(csv.DictReader(open(rr, encoding="utf-8")))
+    fig, ax = plt.subplots(figsize=(8, 4.2))
+    h = 0.36
+    for j, (data, lab, col) in enumerate([(comp, "v1.1 (first run)", "#b8b7b1"), (comp2, "v1.2 (after fix, independent re-run)", BLUE)]):
+        for i, (f, _) in enumerate(fields):
+            a = 100 * sum(r[f + "_manual"] == r[f + "_ai"] for r in data) / len(data)
+            y = i + (j - 0.5) * (h + 0.02)
+            ax.barh(y, a, h, color=col, label=lab if i == 0 else None)
+            ax.text(a + 1, y, f"{a:.0f}%", va="center", fontsize=9)
+    ax.set_yticks(range(len(fields)), [x[1] for x in fields]); ax.invert_yaxis(); ax.set_xlim(0, 112); ax.set_xticks([])
+    ax.legend(frameon=False, loc="lower right", fontsize=9)
+    style(ax, "Agreement with blind human coding, before and after the fix", "Same 100 reports; exact agreement per field")
+    fig.tight_layout(); fig.savefig(OUT / "fig6_validation_before_after.png"); plt.close(fig)
+    print("fig6 done")

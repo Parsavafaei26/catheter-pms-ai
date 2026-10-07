@@ -59,3 +59,8 @@ Issues found:
 **Step 6: Figures and FMEA comparison (done)**
 - `scripts/make_figures.py` builds five figures in `figures/` (palette checked for colour-blind safety).
 - `docs/07_fmea_comparison.md`: FMEA rows vs field data, hazards with no FMEA row, six recommended FMEA updates.
+
+**Optional re-test (done)**
+- Categories v1.2: unplanned line replacement = S3; repair/trim/removal = S2; severity patient-only; full manufacturer narrative given to the model.
+- Independent re-run by a separate Claude instance with only the rules and report text.
+- Severity agreement 61% -> 85% (kappa 0.44 -> 0.78); failure mode 93% -> 92%; all fields identical 43% -> 63%.

@@ -60,3 +60,41 @@ human review of severity and of every serious event**, as stated in the intended
 - The reviewer is also the author of the coding rules.
 - AI and reviewer inputs differed in narrative length (point 3).
 - 100 reports from the same 300-report sample used for the main analysis.
+
+## Re-test after the fix (categories v1.2)
+
+The validation found two causes of error: an ambiguous severity rule and a shortened manufacturer
+narrative. Following a CAPA-style approach, both were corrected:
+
+- **Rule fix (v1.2):** any unplanned replacement of the central line = S3; repair, trim or removal
+  without replacement = S2; severity covers the patient only.
+- **Input fix:** the model received the full manufacturer narrative.
+
+To keep the re-test independent, the 100 reports were re-coded by a **separate Claude instance**
+that received only the v1.2 rules and the report text. It had no access to the human labels, the
+first AI labels or the project discussion. Results: `data/rerun/rerun_labels_v1_2.csv`,
+comparison `data/rerun/validation_comparison_v1_2.csv`.
+
+| Field | v1.1 agreement (kappa) | v1.2 agreement (kappa) |
+|---|---|---|
+| Primary failure mode | 93% (0.90) | 92% (0.89) |
+| Secondary failure mode | 86% (0.61) | 93% (0.83) |
+| Phase of use | 93% (0.88) | 96% (0.93) |
+| **Severity** | **61% (0.44)** | **85% (0.78)** |
+| Likely contributor | 86% (0.62) | 88% (0.75) |
+| Retained fragment | 99% (0.93) | 100% (1.00) |
+| User harm | 100% (1.00) | 100% (1.00) |
+| All seven fields identical | 43% | 63% |
+
+Severity agreement rose from moderate to substantial; failure-mode agreement stayed at about 92-93%.
+The remaining severity differences still lean one way (the reviewer higher in 15 of 15), so human
+review of severity stays in place. Three of the eight remaining failure-mode differences sit on
+the same boundary, a leak or separation at the joint between the tube and the hub (catheter body
+vs external component), which is the next rule to clarify.
+
+**Caveat:** the v1.2 severity rule was written after seeing where the reviewer and the AI
+disagreed, and the re-test used the same 100 reports. The improvement shows that the clarified
+rule removes most of the ambiguity; it is not a fully independent estimate of accuracy. A fresh
+set of reports coded by both would be needed for that.
+
+![Before and after](../figures/fig6_validation_before_after.png)

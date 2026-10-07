@@ -1,9 +1,11 @@
 """Step 5: compare blind manual coding with AI coding.
 
+Usage: python3 scripts/compare_validation.py [ai_labels.csv] [output.csv]
+
 Reads data/step5_manual_coding_completed.xlsx (manual) and data/processed/ai_labels_full.csv (AI),
 prints per-field agreement and Cohen's kappa, and writes data/processed/validation_comparison.csv.
 """
-import csv
+import csv, sys
 from collections import Counter
 from pathlib import Path
 from openpyxl import load_workbook
@@ -21,7 +23,9 @@ def kappa(a, b):
     return (po - pe) / (1 - pe) if pe < 1 else 1.0
 
 
-ai = {r["report_number"]: r for r in csv.DictReader(open(ROOT / "data/processed/ai_labels_full.csv", encoding="utf-8"))}
+AI_FILE = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data/processed/ai_labels_full.csv"
+OUT_FILE = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "data/processed/validation_comparison.csv"
+ai = {r["report_number"]: r for r in csv.DictReader(open(AI_FILE, encoding="utf-8"))}
 ws = load_workbook(ROOT / "data/step5_manual_coding_completed.xlsx")["Coding"]
 rows = []
 for r in range(2, ws.max_row + 1):
@@ -50,7 +54,7 @@ print("severity difference (manual - AI):", dict(sorted(diff.items())))
 allf = sum(all(m[f] == x[f] for f, _ in FIELDS) for _, m, x in rows) / len(rows)
 print(f"all 7 fields identical: {allf:.0%}")
 
-with open(ROOT / "data/processed/validation_comparison.csv", "w", newline="", encoding="utf-8") as fh:
+with open(OUT_FILE, "w", newline="", encoding="utf-8") as fh:
     w = csv.writer(fh)
     w.writerow(["report_number"] + [f"{f}_{s}" for f, _ in FIELDS for s in ("manual", "ai")] + ["manual_note", "ai_note"])
     for rid, m, x in rows:

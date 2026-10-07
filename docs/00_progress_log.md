@@ -49,3 +49,9 @@ Issues found:
 - 300 reports coded (25 per quarter). 288 unique complaints after removing 3 voided duplicates and grouping repeat reports.
 - Results in `docs/05_ai_classification_results.md`. Main findings: 80% of FDA "leak" reports are catheter body breaks; catheter breaks rose from 28% to 54% of complaints 2023-2025; a septum/stopper leak cluster in 2023 that faded; insertion accessories (14%) are the biggest hazard missing from the reference FMEA.
 - Built `data/step5_manual_coding.xlsx`: 100 reports for blind manual coding (no AI answers).
+
+**Step 5: Validation (done)**
+- Author coded 100 reports blind in `data/step5_manual_coding_completed.xlsx`.
+- Primary failure mode: 93% agreement (kappa 0.90). Phase 93%, retained fragment 99%, user harm 100%. Severity 61% (kappa 0.44), AI systematically one level lower, mainly "new line inserted" cases.
+- Found that the AI was given a shorter manufacturer narrative than the reviewer; to fix before any re-run.
+- Results in `docs/06_validation_results.md`.

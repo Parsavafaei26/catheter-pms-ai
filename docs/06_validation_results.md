@@ -1,7 +1,7 @@
 # 6. Validation: AI vs blind manual coding (step 5)
 
 *October 2026. 100 reports, stratified by year (seed 5), coded independently by the author using
-categories v1.1, then compared with the AI labels. Script: `scripts/compare_validation.py`.
+categories v1.1, without seeing the AI labels (confirmed blind), then compared with the AI labels. Script: `scripts/compare_validation.py`.
 Row-by-row comparison: `data/processed/validation_comparison.csv`.*
 
 ## Agreement

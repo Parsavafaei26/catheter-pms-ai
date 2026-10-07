@@ -55,3 +55,7 @@ Issues found:
 - Primary failure mode: 93% agreement (kappa 0.90). Phase 93%, retained fragment 99%, user harm 100%. Severity 61% (kappa 0.44), AI systematically one level lower, mainly "new line inserted" cases.
 - Found that the AI was given a shorter manufacturer narrative than the reviewer; to fix before any re-run.
 - Results in `docs/06_validation_results.md`.
+
+**Step 6: Figures and FMEA comparison (done)**
+- `scripts/make_figures.py` builds five figures in `figures/` (palette checked for colour-blind safety).
+- `docs/07_fmea_comparison.md`: FMEA rows vs field data, hazards with no FMEA row, six recommended FMEA updates.

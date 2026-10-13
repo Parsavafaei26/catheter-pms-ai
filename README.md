@@ -20,6 +20,10 @@ ISO 14971-style FMEA.
 
 ![Failure mode trend](figures/fig2_failure_mode_trend.png)
 
+## Follow-on project
+
+[pms-signal-agent](https://github.com/Parsavafaei26/pms-signal-agent) turns this method into an auditable agent: LLM coding with a validator retry loop, a SQLite database and SQL signal checks.
+
 ## Intended use
 
 Decision support for PMS trend review. Not for reportability decisions, incidence rates or
